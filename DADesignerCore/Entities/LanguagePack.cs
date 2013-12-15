@@ -17,7 +17,7 @@ namespace DADesignerCore.Entities
             IsDefault = true;
             DisplayStrings = new DisplayStringCollection(element);
         }
-       //  [XmlAttribute]
+       //  
         public string ID
         {
             get
@@ -29,7 +29,7 @@ namespace DADesignerCore.Entities
                 Element.Attribute("ID").Value = value;
             }
         }
-      //   [XmlAttribute]
+      //   
         public bool IsDefault
         {
             get

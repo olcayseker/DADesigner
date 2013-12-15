@@ -12,7 +12,7 @@ namespace DADesignerCore.Entities
        DiscoveryElement element = new DiscoveryElement("Discovery");
        DiscoveryTypes _discoveryTypes;
        DataSource _dataSource;
-       // [XmlAttribute]
+       // 
 
        public string ID
        {
@@ -25,7 +25,7 @@ namespace DADesignerCore.Entities
                Element.Attribute("ID").Value = value;
            }
        }
-      // [XmlAttribute]
+      // 
        public bool Enabled
        {
            get
@@ -37,7 +37,7 @@ namespace DADesignerCore.Entities
                Element.Attribute("Enabled").Value = Convert.ToString(value).ToLower();
            }
        }
-     //  [XmlAttribute]
+     //  
        public string Target
        {
            get
@@ -49,7 +49,7 @@ namespace DADesignerCore.Entities
                Element.Attribute("Target").Value = value;
            }
        }
-       [XmlAttribute]
+       
        public bool ConfirmDelivery
        {
            get
@@ -62,7 +62,7 @@ namespace DADesignerCore.Entities
            }
        }
 
-       [XmlAttribute]
+       
        public bool Remotable
        {
            get
@@ -74,7 +74,7 @@ namespace DADesignerCore.Entities
                Element.Attribute("Remotable").Value = Convert.ToString(value).ToLower();
            }
        }
-       [XmlAttribute]
+       
        public string Priority
        {
            get

@@ -11,7 +11,7 @@ namespace DADesignerCore.Entities
     {
        ClassTypeElement element = new ClassTypeElement("ClassType");
 
-        [XmlAttribute]
+        
        public string ID
        {
            get
@@ -23,7 +23,7 @@ namespace DADesignerCore.Entities
                Element.Attribute("ID").Value = value;
            }
        }
-        [XmlAttribute]
+        
         public string Accessibility
         {
             get
@@ -35,7 +35,7 @@ namespace DADesignerCore.Entities
                 Element.Attribute("Accessibility").Value = value;
             }
         }
-        [XmlAttribute]
+        
         public string Base
         {
             get
@@ -47,7 +47,7 @@ namespace DADesignerCore.Entities
                 Element.Attribute("Base").Value = value;
             }
         }
-        [XmlAttribute]
+        
         public bool Abstract
         {
             get
@@ -59,7 +59,7 @@ namespace DADesignerCore.Entities
                 Element.Attribute("Abstract").Value = Convert.ToString(value).ToLower();
             }
         }
-        [XmlAttribute]
+        
         public bool Hosted
         {
             get
@@ -71,7 +71,7 @@ namespace DADesignerCore.Entities
                 Element.Attribute("Hosted").Value = Convert.ToString(value).ToLower();
             }
         }
-        [XmlAttribute]
+        
         public bool Singleton
         {
             get

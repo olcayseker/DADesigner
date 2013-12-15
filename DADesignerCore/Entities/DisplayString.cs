@@ -10,7 +10,7 @@ namespace DADesignerCore.Entities
     public class DisplayString
     {
         DisplayStringElement element = new DisplayStringElement("DisplayString");
-      //  [XmlAttribute]
+      //  
         public string ElementID
         {
             get

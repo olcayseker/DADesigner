@@ -12,7 +12,7 @@ namespace DADesignerCore.Entities
     public class Reference
     {
         ReferenceElement element = new ReferenceElement("Reference");
-       // [XmlAttribute]
+       // 
         public string Alias
         {
             get
@@ -60,33 +60,6 @@ namespace DADesignerCore.Entities
 
         public ReferenceElement Element { get { return element; } }
 
-        //public override bool Equals(object obj)
-        //{
-        //    var other = obj as Reference;
-        //    Debugger.Break();
-        //    if (other == null)
-        //        return false;
-
-        //    if (ReferenceEquals(this, other))
-        //        return true;
-
-        //    if (this.GetHashCode() != other.GetHashCode())
-        //        return false;
-
-
-        //    return this.PublicKeyToken.Equals(other.PublicKeyToken);
-            
-        //}
-
-        //public override int GetHashCode()
-        //{
-        //    if (string.IsNullOrWhiteSpace(this.PublicKeyToken))
-        //        return this.element.Name.GetHashCode() * 4;
-
-        //    unchecked
-        //    {
-        //        return this.PublicKeyToken.GetHashCode() + this.element.Name.GetHashCode() * 4;
-        //    }
-        //}
+      
     }
 }

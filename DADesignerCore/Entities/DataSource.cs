@@ -14,7 +14,7 @@ namespace DADesignerCore.Entities
        {
            MembershipRules = new MembershipRuleCollection(element);
        }
-      // [XmlAttribute]
+      // 
        public string ID
        {
            get
@@ -26,7 +26,7 @@ namespace DADesignerCore.Entities
                Element.Attribute("ID").Value = value;
            }
        }
-      // [XmlAttribute]
+      // 
        public string TypeID
        {
            get
