@@ -7,5 +7,8 @@ namespace DADesignerCore.DesignerAPIManager
 {
     public interface ICreateChild:ICreateRoot
     {
+        void CreateRelationshipType();
+        void CreateDiscoveries();
+        void CreateDependencyMonitor();
     }
 }

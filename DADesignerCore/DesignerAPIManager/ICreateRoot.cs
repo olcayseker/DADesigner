@@ -10,6 +10,6 @@ namespace DADesignerCore.DesignerAPIManager
     public interface ICreateRoot
     {
         void CreateClass(ClassType clazzType);
-        void CreateDisplayString(string displayName);
+        void CreateDisplayString();
     }
 }
