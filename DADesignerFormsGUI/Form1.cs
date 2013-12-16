@@ -101,5 +101,12 @@ namespace DADesignerFormsGUI
 
             treeView1.ExpandAll();
         }
+
+        private void tsbShowXML_Click(object sender, EventArgs e)
+        {
+            ShowXML showxml = new ShowXML() { XMLText = "" };
+            showxml.ShowDialog();
+            showxml.Dispose();
+        }
     }
 }
