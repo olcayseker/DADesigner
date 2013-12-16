@@ -39,7 +39,7 @@ namespace DADesignerCore.EntityElements
         {
             this.Name = "ClassType";
             this.Add(new XAttribute("ID", string.Empty),
-                new XAttribute("Accessibility", string.Empty),
+                new XAttribute("Accessibility", "Public"),
                 new XAttribute("Base", string.Empty),
                 new XAttribute("Abstract", false),
                 new XAttribute("Hosted", false),
