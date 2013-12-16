@@ -22,7 +22,7 @@ namespace DADesignerCore.Entities
                Element.Attribute("ID").Value = value;
            }
        }
-       //[XmlAttribute]
+       //
        public string Accessibility
         {
             get
@@ -46,7 +46,7 @@ namespace DADesignerCore.Entities
                Element.Attribute("Enabled").Value = value.ToString().ToLower();
            }
        }
-     //  [XmlAttribute]
+     //  
        public string Target
        {
            get
@@ -58,7 +58,7 @@ namespace DADesignerCore.Entities
                Element.Attribute("Target").Value = value;
            }
        }
-     //  [XmlAttribute]
+     //  
        public string ParentMonitorID
        {
            get
@@ -94,7 +94,7 @@ namespace DADesignerCore.Entities
                Element.Attribute("Priority").Value = value;
            }
        }
-      // [XmlAttribute]
+      // 
        public string RelationshipType
        {
            get
@@ -106,7 +106,7 @@ namespace DADesignerCore.Entities
                Element.Attribute("RelationshipType").Value = value;
            }
        }
-      // [XmlAttribute]
+      // 
        public string MemberMonitor
        {
            get

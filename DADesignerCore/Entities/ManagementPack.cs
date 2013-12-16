@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace DADesignerCore.Entities
 {
-   // [XmlRootAttribute(Namespace="http://www.w3.org/2001/XMLSchema")]
+  
     public class ManagementPack
     {
 
@@ -18,7 +18,7 @@ namespace DADesignerCore.Entities
         Monitoring monitoring;
         LanguagePacks languagePacks;
      
-       // [XmlAttribute]
+       // 
         public bool ContentReadable
         {
             get
