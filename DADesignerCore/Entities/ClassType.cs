@@ -93,5 +93,7 @@ namespace DADesignerCore.Entities
 
         internal ClassType Parent { get; set; }
         internal string SimpleName { get; set; }
+
+        public string DisplayName { get; set; }
     }
 }
