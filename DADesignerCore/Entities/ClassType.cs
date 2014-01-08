@@ -1,6 +1,8 @@
-﻿using DADesignerCore.EntityElements;
+﻿using DADesignerCore.DesignerAPIManager;
+using DADesignerCore.EntityElements;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
@@ -11,6 +13,7 @@ namespace DADesignerCore.Entities
     {
        ClassTypeElement element = new ClassTypeElement("ClassType");
 
+       public event Action<ClassType,string> IDChanged;
         
        public string ID
        {
@@ -20,7 +23,16 @@ namespace DADesignerCore.Entities
            }
            set
            {
-               Element.Attribute("ID").Value = value;
+               if (IDChanged != null)
+               {
+                  // ManagementPackQueries.ChangeClassTypeID(ID, value);
+                   IDChanged(this, value);
+                  
+               }
+               //else
+               //{
+                   Element.Attribute("ID").Value = value;                   
+              // }
            }
        }
         
@@ -47,7 +59,9 @@ namespace DADesignerCore.Entities
                 Element.Attribute("Base").Value = value;
             }
         }
-        
+
+
+        [System.ComponentModel.ReadOnly(true)]
         public bool Abstract
         {
             get
@@ -59,7 +73,9 @@ namespace DADesignerCore.Entities
                 Element.Attribute("Abstract").Value = Convert.ToString(value).ToLower();
             }
         }
-        
+
+        [System.ComponentModel.ReadOnly(true)]
+        [Description("Distributed Application icerisinde Hosted tipi kullanilmamalidir.")]
         public bool Hosted
         {
             get
@@ -71,7 +87,9 @@ namespace DADesignerCore.Entities
                 Element.Attribute("Hosted").Value = Convert.ToString(value).ToLower();
             }
         }
-        
+
+        [System.ComponentModel.ReadOnly(true)]
+       [Description("Singleton grup yaratmak icin kullanilan nesne tipidir, Distributed Application yaratirken tum class tipleri singleton olarak yaratilmalidir")]
         public bool Singleton
         {
             get
@@ -83,6 +101,8 @@ namespace DADesignerCore.Entities
                 Element.Attribute("Singleton").Value = Convert.ToString(value).ToLower();
             }
         }
+
+       [Browsable(false)]
         public ClassTypeElement Element
         {
             get
@@ -91,8 +111,12 @@ namespace DADesignerCore.Entities
             }
         }
 
-        internal ClassType Parent { get; set; }
-        internal string SimpleName { get; set; }
+       [Browsable(false)]
+        public ClassType Parent { get; set; }
+       [Browsable(false)]
+       public ClassType Child { get; set; }
+       [Browsable(false)]
+        public string SimpleName { get; set; }
 
         public string DisplayName { get; set; }
     }

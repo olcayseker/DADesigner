@@ -12,8 +12,7 @@ namespace DADesignerCore.Entities
        DiscoveryElement element = new DiscoveryElement("Discovery");
        DiscoveryTypes _discoveryTypes;
        DataSource _dataSource;
-       // 
-
+       
        public string ID
        {
            get
