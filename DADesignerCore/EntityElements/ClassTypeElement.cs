@@ -43,7 +43,7 @@ namespace DADesignerCore.EntityElements
                 new XAttribute("Base", string.Empty),
                 new XAttribute("Abstract", false),
                 new XAttribute("Hosted", false),
-                new XAttribute("Singleton", false));
+                new XAttribute("Singleton", true));
 
         }
     }
