@@ -39,12 +39,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DesignerAPIManager\ClassTypeBuilder.cs" />
     <Compile Include="DesignerAPIManager\CreateChildClass.cs" />
     <Compile Include="DesignerAPIManager\CreateRootClass.cs" />
     <Compile Include="DesignerAPIManager\DesignerManager.cs" />
     <Compile Include="DesignerAPIManager\ICreateChild.cs" />
     <Compile Include="DesignerAPIManager\ICreateRoot.cs" />
-    <Compile Include="DesignerAPIManager\ModelInitializer.cs" />
+    <Compile Include="DesignerAPIManager\ManagementPackInitializer.cs" />
+    <Compile Include="DesignerAPIManager\ManagementPackQueries.cs" />
     <Compile Include="Entities\ClassType.cs" />
     <Compile Include="Entities\DataSource.cs" />
     <Compile Include="Entities\DependencyMonitor.cs" />
