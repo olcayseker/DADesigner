@@ -1,4 +1,5 @@
-﻿using DADesignerCore.Entities;
+﻿using DADesignerCore.DesignerAPIManager;
+using DADesignerCore.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,7 @@ namespace DADesignerFormsGUI
 {
     public partial class Form1 : Form
     {
+        ClassTypeBuilder builder;
         public Form1()
         {
             InitializeComponent();
@@ -20,7 +22,7 @@ namespace DADesignerFormsGUI
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            builder = new ClassTypeBuilder(new CreateRootClass(), new CreateChildClass(), ManagementPackInitializer.ManagementPack);
         }
 
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -80,9 +82,11 @@ namespace DADesignerFormsGUI
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
             if (treeView1.SelectedNode != null)
-                treeView1.SelectedNode.Tag = new ClassType();
+            {
+                //treeView1.SelectedNode.Tag = new ClassType();
 
-            propertyGrid1.SelectedObject = treeView1.SelectedNode.Tag;
+                propertyGrid1.SelectedObject = treeView1.SelectedNode.Tag;
+            }
         }
 
         private void addNodeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -91,20 +95,36 @@ namespace DADesignerFormsGUI
             {
                 TreeNode root = new TreeNode("root");
                 treeView1.Nodes.Add(root);
+
+                ClassType rootClass = new ClassType();
+                rootClass.DisplayName = root.Text;
+                rootClass.ID = root.Text;
+                root.Tag = rootClass;
+                builder.BuildRootClass(rootClass);
+
                 return;
             }
 
             if (treeView1.SelectedNode == null)
                 treeView1.SelectedNode = treeView1.Nodes[0];
 
-            treeView1.SelectedNode.Nodes.Add("child");
+            var childNode= treeView1.SelectedNode.Nodes.Add("child");
+            ClassType childClass = new ClassType();
+            
+            childClass.ID= childClass.DisplayName = childNode.Text;
+            childClass.Parent = treeView1.SelectedNode.Tag as ClassType;
+            childClass.Parent.Child = childClass;
+            childNode.Tag = childClass;
+            childClass.SimpleName = childNode.Text;
+            builder.BuildChildClass(childClass);
 
             treeView1.ExpandAll();
         }
-
+             
         private void tsbShowXML_Click(object sender, EventArgs e)
         {
-            ShowXML showxml = new ShowXML() { XMLText = "" };
+            ShowXML showxml = new ShowXML();
+            showxml.XMLText = ManagementPackInitializer.ManagementPack.Element.ToString();
             showxml.ShowDialog();
             showxml.Dispose();
         }
