@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DADesignerCore", "DADesigne
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DADesignerFormsGUI", "DADesignerFormsGUI\DADesignerFormsGUI.csproj", "{FC1D1B90-0AA3-4910-AF09-2A91DABB536D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DADesignerTests", "DADesignerTests\DADesignerTests.csproj", "{D469E83B-95C4-4A55-972E-D81D9F0AD2E0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DADesignerCoreTests", "DADesignerCoreTests\DADesignerCoreTests.csproj", "{3080DF7C-03F3-4C9B-A5A2-76CA6C531090}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{FC1D1B90-0AA3-4910-AF09-2A91DABB536D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC1D1B90-0AA3-4910-AF09-2A91DABB536D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC1D1B90-0AA3-4910-AF09-2A91DABB536D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D469E83B-95C4-4A55-972E-D81D9F0AD2E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D469E83B-95C4-4A55-972E-D81D9F0AD2E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D469E83B-95C4-4A55-972E-D81D9F0AD2E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D469E83B-95C4-4A55-972E-D81D9F0AD2E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3080DF7C-03F3-4C9B-A5A2-76CA6C531090}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3080DF7C-03F3-4C9B-A5A2-76CA6C531090}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3080DF7C-03F3-4C9B-A5A2-76CA6C531090}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3080DF7C-03F3-4C9B-A5A2-76CA6C531090}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
