@@ -11,5 +11,7 @@ namespace DADesignerCore.DesignerAPIManager
     {
         void CreateClass(ClassType clazzType);
         void CreateDisplayString();
+
+        ManagementPack ManagementPack { get; set; }
     }
 }

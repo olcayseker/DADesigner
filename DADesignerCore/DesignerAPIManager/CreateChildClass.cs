@@ -9,21 +9,27 @@ namespace DADesignerCore.DesignerAPIManager
 {
     public class CreateChildClass : ICreateChild
     {
-        ManagementPack _managementPack;
+        //ManagementPack ManagementPack;
         ClassType classType;
         RelationshipType relationshipType;
         string parentid, releationShipTypeId;
-        public CreateChildClass(ManagementPack managementPack)
-        {
-            _managementPack = managementPack;
-        }
+        //public CreateChildClass(ManagementPack managementPack)
+        //{
+        //    ManagementPack = managementPack;
+        //}
         public void CreateClass(ClassType clazzType)
         {
+            classType = clazzType;
             classType.Base = "MSSL!Microsoft.SystemCenter.ServiceDesigner.ServiceComponentGroup";
             parentid = clazzType.Parent.ID;
-            clazzType.ID = string.Format("{0}.{1}", parentid, clazzType.SimpleName);
-            _managementPack.TypeDefinitions.EntityTypes.ClassTypes.Add(clazzType);
-            classType = clazzType;
+            classType.ID = string.Format("{0}.{1}", parentid, clazzType.SimpleName);
+            ManagementPack.TypeDefinitions.EntityTypes.ClassTypes.Add(clazzType);
+            classType.IDChanged += classType_IDChanged;
+        }
+
+        void classType_IDChanged(ClassType sender, string e)
+        {
+            ManagementPackQueries.ChangeClassTypeID(sender.ID, e);
         }
 
         public void CreateRelationshipType()
@@ -33,7 +39,7 @@ namespace DADesignerCore.DesignerAPIManager
             relationshipType.ID = releationShipTypeId;
             relationshipType.Source = classType.Parent.ID;
             relationshipType.Target = classType.ID;
-            _managementPack.TypeDefinitions.EntityTypes.RelationshipTypes.Add(relationshipType);
+            ManagementPack.TypeDefinitions.EntityTypes.RelationshipTypes.Add(relationshipType);
         }
 
         public void CreateDiscoveries()
@@ -47,13 +53,15 @@ namespace DADesignerCore.DesignerAPIManager
                 ConfirmDelivery = false,
                 Remotable = true,
                 Priority = "Normal",
+                DiscoveryTypes=new DiscoveryTypes (),
                 DataSource = new DataSource()
                 {
                     ID = "DS",
                     TypeID = "SC!Microsoft.SystemCenter.GroupPopulator",
                     RuleId = "$MPElement$",
                     GroupInstanceId = "$Target/Id$"
-                }
+                },
+
             };
 
             MembershipRule rule = new MembershipRule()
@@ -63,7 +71,7 @@ namespace DADesignerCore.DesignerAPIManager
             };
 
             discovery.DataSource.MembershipRules.Add(rule);
-            _managementPack.Monitoring.Discoveries.Add(discovery);
+            ManagementPack.Monitoring.Discoveries.Add(discovery);
         }
 
         public void CreateDependencyMonitor()
@@ -80,7 +88,7 @@ namespace DADesignerCore.DesignerAPIManager
             availability.Category = "AvailabilityHealth";
             availability.Algorithm = "WorstOf";
 
-            _managementPack.Monitoring.Monitors.Add(availability);
+            ManagementPack.Monitoring.Monitors.Add(availability);
 
             DependencyMonitor performanceState = new DependencyMonitor();
             performanceState.ID = string.Format("mon.{0}.PerformanceState", relationshipType.Target);
@@ -94,7 +102,7 @@ namespace DADesignerCore.DesignerAPIManager
             performanceState.Category = "PerformanceHealth";
             performanceState.Algorithm = "WorstOf";
 
-            _managementPack.Monitoring.Monitors.Add(performanceState);
+            ManagementPack.Monitoring.Monitors.Add(performanceState);
 
             DependencyMonitor securityState = new DependencyMonitor();
             securityState.ID = string.Format("mon.{0}.SecurityState", relationshipType.Target);
@@ -108,7 +116,7 @@ namespace DADesignerCore.DesignerAPIManager
             securityState.Category = "SecurityHealth";
             securityState.Algorithm = "WorstOf";
 
-            _managementPack.Monitoring.Monitors.Add(securityState);
+            ManagementPack.Monitoring.Monitors.Add(securityState);
 
             DependencyMonitor configurationState = new DependencyMonitor();
             configurationState.ID = string.Format("mon.{0}.ConfigurationState", relationshipType.Target);
@@ -122,15 +130,15 @@ namespace DADesignerCore.DesignerAPIManager
             configurationState.Category = "ConfigurationHealth";
             configurationState.Algorithm = "WorstOf";
 
-            _managementPack.Monitoring.Monitors.Add(securityState);
+            ManagementPack.Monitoring.Monitors.Add(securityState);
         }
         public void CreateDisplayString()
         {
             DisplayString displayString = new DisplayString() { Name = classType.DisplayName, Description = classType.DisplayName, ElementID = classType.ID };
-            _managementPack.LanguagePacks.LanguagePack.DisplayStrings.Add(displayString);
+            ManagementPack.LanguagePacks.LanguagePack.DisplayStrings.Add(displayString);
         }
 
-
+        public ManagementPack ManagementPack { get; set; }
 
 
 

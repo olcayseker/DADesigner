@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DADesignerCore.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,14 +9,6 @@ namespace DADesignerCore.DesignerAPIManager
 {
     public class DesignerManager
     {
-        public void AddRootClass()
-        {
-
-        }
-
-        public void AddChildClass()
-        {
-
-        }
+        
     }
 }

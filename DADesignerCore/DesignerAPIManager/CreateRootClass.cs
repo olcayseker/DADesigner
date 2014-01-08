@@ -10,23 +10,31 @@ namespace DADesignerCore.DesignerAPIManager
 {
     public class CreateRootClass:ICreateRoot
     {
-        ManagementPack _managementPack;
+        //ManagementPack _managementPack;
         string displayName;
-        public CreateRootClass(ManagementPack managementPack)
+        public CreateRootClass()
         {
-            _managementPack = managementPack;
+           // _managementPack = managementPack;
         }
         public void CreateClass(ClassType rootClass)    
         {
             rootClass.Base = "System!System.Service";
-            _managementPack.TypeDefinitions.EntityTypes.ClassTypes.Add(rootClass);
+            ManagementPack.TypeDefinitions.EntityTypes.ClassTypes.Add(rootClass);
             displayName = rootClass.DisplayName;
+            rootClass.IDChanged += rootClass_IDChanged;
+        }
+
+        void rootClass_IDChanged(object sender, string e)
+        {
+            //throw new NotImplementedException();
         }
 
         public void CreateDisplayString()
         {
             DisplayString displayString = new DisplayString() { Name = displayName };
-            _managementPack.LanguagePacks.LanguagePack.DisplayStrings.Add(displayString);
+            ManagementPack.LanguagePacks.LanguagePack.DisplayStrings.Add(displayString);
         }
+
+        public ManagementPack ManagementPack { get; set; }
     }
 }
