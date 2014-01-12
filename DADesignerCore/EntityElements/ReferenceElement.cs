@@ -12,30 +12,30 @@ namespace DACore.ManagementPackElements
         public ReferenceElement(XName name)
             : base(name)
         {
-            AddMandatoryObjects();
+            Initialize();
         }
         public ReferenceElement(XName name, object content)
             : base(name, content)
         {
-            AddMandatoryObjects();
+            Initialize();
         }
         public ReferenceElement(XName name, params object[] content)
             : base(name, content)
         {
-            AddMandatoryObjects();
+            Initialize();
         }
         public ReferenceElement(XElement other)
             : base(other)
         {
-            AddMandatoryObjects();
+            Initialize();
         }
         public ReferenceElement(XStreamingElement other)
             : base(other)
         {
-            AddMandatoryObjects();
+            Initialize();
         }
 
-        void AddMandatoryObjects()
+        void Initialize()
         {
             this.Name = "Reference";
             this.Add(new XAttribute("Alias", string.Empty));

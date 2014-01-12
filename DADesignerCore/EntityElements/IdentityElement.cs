@@ -12,30 +12,30 @@ namespace DACore.ManagementPackElements
         public IdentityElement(XName name)
             : base(name)
         {
-            AddMandatoryObjects();
+            Initialize();
         }
         public IdentityElement(XName name, object content)
             : base(name, content)
         {
-            AddMandatoryObjects();
+            Initialize();
         }
         public IdentityElement(XName name, params object[] content)
             : base(name, content)
         {
-            AddMandatoryObjects();
+            Initialize();
         }
         public IdentityElement(XElement other)
             : base(other)
         {
-            AddMandatoryObjects();
+            Initialize();
         }
         public IdentityElement(XStreamingElement other)
             : base(other)
         {
-            AddMandatoryObjects();
+            Initialize();
         }
 
-        void AddMandatoryObjects()
+        void Initialize()
         {
             this.Name = "Identity";
             this.Add(new XElement("ID", string.Empty));

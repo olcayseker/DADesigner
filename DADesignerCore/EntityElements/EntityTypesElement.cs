@@ -12,30 +12,30 @@ namespace DACore.ManagementPackElements
         public EntityTypesElement(XName name)
             : base(name)
         {
-            AddMandatoryObjects();
+            Initialize();
         }
         public EntityTypesElement(XName name, object content)
             : base(name, content)
         {
-            AddMandatoryObjects();
+            Initialize();
         }
         public EntityTypesElement(XName name, params object[] content)
             : base(name, content)
         {
-            AddMandatoryObjects();
+            Initialize();
         }
         public EntityTypesElement(XElement other)
             : base(other)
         {
-            AddMandatoryObjects();
+            Initialize();
         }
         public EntityTypesElement(XStreamingElement other)
             : base(other)
         {
-            AddMandatoryObjects();
+            Initialize();
         }
 
-        void AddMandatoryObjects()
+        void Initialize()
         {
             this.Name = "EntityTypes";
             this.Add(new XElement("ClassTypes"));

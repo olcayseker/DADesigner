@@ -14,30 +14,30 @@ namespace DACore.ManagementPackElements
         public ManifestElement(XName name)
             : base(name)
         {
-            AddMandatoryObjects();
+            Initialize();
         }
         public ManifestElement(XName name, object content)
             : base(name, content)
         {
-            AddMandatoryObjects();
+            Initialize();
         }
         public ManifestElement(XName name, params object[] content)
             : base(name, content)
         {
-            AddMandatoryObjects();
+            Initialize();
         }
         public ManifestElement(XElement other)
             : base(other)
         {
-            AddMandatoryObjects();
+            Initialize();
         }
         public ManifestElement(XStreamingElement other)
             : base(other)
         {
-            AddMandatoryObjects();
+            Initialize();
         }
 
-        void AddMandatoryObjects()
+        void Initialize()
         {
             this.Name = "Manifest";
             this.Add(new XElement("Identity"));
