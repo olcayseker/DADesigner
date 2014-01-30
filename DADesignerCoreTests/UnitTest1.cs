@@ -11,21 +11,29 @@ namespace DADesignerTests
         [TestMethod]
         public void TestMethod1()
         {
-           // ManagementPackElement mpe = new ManagementPackElement("dsds");
+            ManagementPackElement mpe = new ManagementPackElement("dsds");
 
-            Manifest manifest = new Manifest();
+            Manifest manifest = new Manifest(mpe);
 
-            Identity id = new Identity();
+            Identity id = new Identity(manifest.Element);
             id.ID = "qwe";
             id.Version = "11";
 
             manifest.Identity = id;
             manifest.Name = "manifesto";
 
-            Reference ref1 = new Reference() { Alias = "a1", ID = "1", PublicKeyToken = "12312323", Version = "1" };
-            Reference ref2 = new Reference() { Alias = "a2", ID = "2", PublicKeyToken = "45666565", Version = "1" };
+            Reference ref1 = new Reference() { Alias = "a1", ID = "1", PublicKeyToken = "1112233444", Version = "1" };
             manifest.References.Add(ref1);
+
+            Reference ref2 = new Reference() { Alias = "a2", ID = "2", PublicKeyToken = "45666565", Version = "1" };
             manifest.References.Add(ref2);
+
+            var firstItem= manifest.References[0];
+            firstItem.Alias = "aa";
+
+            var secondItem = manifest.References[1];
+            secondItem.ID = "99";
+
 
             var count = manifest.References.Count;
 
@@ -206,7 +214,7 @@ namespace DADesignerTests
         public void TestMethod7()
         {
             ManagementPack mp = new ManagementPack();
-            mp.Manifest = new Manifest();
+            mp.Manifest = new Manifest(mp.Element);
             mp.TypeDefinitions = new TypeDefinitions();
             mp.Monitoring = new Monitoring();
             mp.LanguagePacks = new LanguagePacks();
@@ -223,9 +231,9 @@ namespace DADesignerTests
             //  mp.Monitoring = new Monitoring();
             //  mp.LanguagePacks = new LanguagePacks();
 
-            Manifest manifest = new Manifest();
+            Manifest manifest = new Manifest(mp.Element);
 
-            Identity id = new Identity();
+            Identity id = new Identity(manifest.Element);
             id.ID = "qwe";
             id.Version = "11";
 
@@ -359,9 +367,9 @@ namespace DADesignerTests
 
             ManagementPack mp = new ManagementPack();
 
-            mp.Manifest = new Manifest();
+            mp.Manifest = new Manifest(mp.Element);
 
-            Identity id = new Identity();
+            Identity id = new Identity(mp.Manifest.Element);
             id.ID = "daDesigner";
             id.Version = "1.0.0.4";
 

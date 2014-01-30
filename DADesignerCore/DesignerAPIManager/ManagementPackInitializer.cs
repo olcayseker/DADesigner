@@ -15,8 +15,8 @@ namespace DADesignerCore.DesignerAPIManager
         {
             ManagementPack mp = new ManagementPack();
 
-            mp.Manifest = new Manifest();
-            mp.Manifest.Identity = new Identity();
+            mp.Manifest = new Manifest(mp.Element);
+            mp.Manifest.Identity = new Identity(mp.Manifest.Element);
             mp.Manifest.Identity.ID = "daDesigner";
             mp.Manifest.Identity.Version = "1.0.0.4";
             mp.Manifest.Name = "daDesigner";

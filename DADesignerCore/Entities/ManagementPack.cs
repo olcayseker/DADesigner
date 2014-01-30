@@ -40,7 +40,9 @@ namespace DADesignerCore.Entities
             set
             {
                 manifest = value;
-                Element.Element("Manifest").Remove();
+                if(Element.Element("Manifest") !=null)
+                    Element.Element("Manifest").Remove();
+
                 Element.Add(manifest.Element);
             }
         }
@@ -88,5 +90,11 @@ namespace DADesignerCore.Entities
         }
 
         public ManagementPackElement Element { get { return element; } }
+
+        public void RefreshLanguagePacksElement()
+        {
+            Element.Element("LanguagePacks").Remove();
+            Element.Add(languagePacks.Element);
+        }
     }
 }

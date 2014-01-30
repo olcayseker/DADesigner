@@ -209,7 +209,9 @@
             // 
             this.treeView1.ContextMenuStrip = this.treeviewContextMenu;
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView1.FullRowSelect = true;
             this.treeView1.HideSelection = false;
+            this.treeView1.HotTracking = true;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
             this.treeView1.Size = new System.Drawing.Size(369, 476);
@@ -240,6 +242,7 @@
             this.propertyGrid1.Name = "propertyGrid1";
             this.propertyGrid1.Size = new System.Drawing.Size(534, 476);
             this.propertyGrid1.TabIndex = 0;
+            this.propertyGrid1.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.propertyGrid1_PropertyValueChanged);
             // 
             // toolStrip1
             // 

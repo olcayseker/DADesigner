@@ -42,53 +42,17 @@ namespace DACore.ManagementPackElements
             this.Add(new XElement("ID", string.Empty));
             this.Add(new XElement("Version", string.Empty));
             this.Add(new XElement("PublicKeyToken", string.Empty));
+
+           //this.Element("Manifest").Element("References").Add(
+           //     new XElement("Reference",
+           //     new XAttribute("Alias", string.Empty),
+           //     new XElement("ID", string.Empty),
+           //     new XElement("Version", string.Empty),
+           //     new XElement("PublicKeyToken", string.Empty)
+           //     ));
         }
 
-        public string Alias
-        {
-            get
-            {
-                return this.Attribute("Alias").Value;
-            }
-            set
-            {
-                this.Attribute("Alias").Value = value;
-            }
-        }
-        public string ID
-        { 
+     
         
-            get
-            {
-               return this.Element("ID").Value;
-            }
-            set
-            {
-                this.Element("ID").Value = value;
-            }
-        }
-        public string Version
-        {
-            get
-            {
-                return this.Element("Version").Value;
-            }
-            set
-            {
-                this.Element("Version").Value = value;
-            }
-        }
-
-        public string PublicKeyToken
-        {
-            get
-            {
-                return this.Element("PublicKeyToken").Value;
-            }
-            set
-            {
-                this.Element("PublicKeyToken").Value = value;
-            }
-        }
     }
 }

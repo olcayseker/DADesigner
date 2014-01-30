@@ -12,18 +12,22 @@ namespace DADesignerCore.EntityElements
    public class ReferenceCollection:ICollection<Reference>
     {
         XElement referencesElement;
+        ManifestElement _parent;
         ReferenceComparer comparer = new ReferenceComparer();
-        public ReferenceCollection(XElement parent)
-        {            
-            referencesElement = parent.Element("References");
+        public ReferenceCollection(ManifestElement parent)
+        {
+            _parent = parent;
+            _parent.Element("Manifest").Add(new XElement("References"));
+            referencesElement = _parent.Element("Manifest").Element("References");
         }
         public void Add(Reference item)
         {
-            referencesElement.Add(new XElement("Reference",
-                 new XAttribute("Alias", item.Alias),
-                 new XElement("ID", item.ID),
-                 new XElement("Version", item.Version),
-                 new XElement("PublicKeyToken", item.PublicKeyToken))); 
+            //referencesElement.Add(new XElement("Reference",
+            //     new XAttribute("Alias", item.Alias),
+            //     new XElement("ID", item.ID),
+            //     new XElement("Version", item.Version),
+            //     new XElement("PublicKeyToken", item.PublicKeyToken))); 
+            referencesElement.Add(item.Element);
         }
 
         public void Clear()
@@ -62,16 +66,35 @@ namespace DADesignerCore.EntityElements
             if (Contains(item))
             {
                 referencesElement.Elements("Reference").First(z => XNode.DeepEquals(item.Element,z)).Remove();
-
+                
                
                 return true;
             }
             return false;
         }
 
+       public Reference this[int index]
+        {
+           get
+            {
+               if(this.Count >0 && index >-1)
+               {
+                  var referenceElement= referencesElement.Elements("Reference").ElementAt(index);
+                  return new Reference(_parent,index)
+                  {
+                      ID = referenceElement.Element("ID").Value,
+                      Version = referenceElement.Element("Version").Value,
+                      PublicKeyToken = referenceElement.Element("PublicKeyToken").Value,
+                      Alias = referenceElement.Attribute("Alias").Value
+                  };
+               }
+                return null;
+            }
+        }
         public IEnumerator<Reference> GetEnumerator()
         {
-           return  referencesElement.Elements("Reference").Select(z => new Reference() {ID=z.Element("ID").Value,
+            int count = -1;//index hep aynı!!!!
+           return  referencesElement.Elements("Reference").Select(z => new Reference(_parent,count++) {ID=z.Element("ID").Value,
                                                                                              Version = z.Element("Version").Value,
                                                                                              PublicKeyToken = z.Element("PublicKeyToken").Value,
                                                                                              Alias = z.Attribute("Alias").Value

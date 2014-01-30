@@ -11,28 +11,28 @@ namespace DADesignerCore.Entities
 {
     public class Manifest
     {
+        ManifestElement element;
+        Identity _identity;
 
-        ManifestElement element = new ManifestElement("Manifest");
-        Identity _identity = new Identity();
-
-
-        public Manifest()
+        public Manifest(ManagementPackElement rootElement)
         {
+            element = new ManifestElement(rootElement);
             References = new ReferenceCollection(element);
+            _identity = new Identity(element);
         }
         public Identity Identity
         {
             get
             {
-                var idElement = element.Element("Identity");
+                var idElement = Element.Element("Manifest").Element("Identity");
                 _identity.ID = idElement.Element("ID").Value;
                 _identity.Version = idElement.Element("Version").Value;
                 return _identity;
             }
             set
             {
-                IdentityElement idElement = new IdentityElement("Identity") { ID = value.ID, Version = value.Version };
-                element.AddIdentity(idElement);
+               // IdentityElement idElement = new IdentityElement(element.Element("Manifest")) { ID = value.ID, Version = value.Version };
+                Element.Element("Manifest").Add(value.Element.Element("Manifest").Element("Identity"));
             }
         }
 
@@ -40,11 +40,11 @@ namespace DADesignerCore.Entities
         {
             get
             {
-                return Element.Element("Name").Value;
+                return Element.Element("Manifest").Element("Name").Value;
             }
             set
             {
-                Element.Element("Name").Value = value;
+                Element.Element("Manifest").Element("Name").Value = value;
             }
         }
         public ReferenceCollection References { get; private set; }

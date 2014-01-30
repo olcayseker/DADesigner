@@ -27,6 +27,8 @@ namespace DADesignerCore.DesignerAPIManager
             foreach (XElement item in relationshipTypes)
             {
                 item.Attribute("ID").Value = item.Attribute("ID").Value.Replace(oldID, newID);
+                item.Element("Source").Value = item.Element("Source").Value.Replace(oldID, newID);
+                item.Element("Target").Value = item.Element("Target").Value.Replace(oldID, newID);
             }
 
             var discoveries = ManagementPackInitializer.ManagementPack.Element.Element("Monitoring").Descendants("Discovery")

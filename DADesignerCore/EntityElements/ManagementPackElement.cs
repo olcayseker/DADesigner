@@ -43,7 +43,7 @@ namespace DACore.ManagementPackElements
             this.Name = "ManagementPack";
             this.Add(new XAttribute("ContentReadable", "true"));
             this.Add(new XAttribute(XNamespace.Xmlns+"xsd", "http://www.w3.org/2001/XMLSchema"));            
-            this.Add(new XElement("Manifest"));
+           // this.Add(new XElement("Manifest"));
             this.Add(new XElement("TypeDefinitions"));
             this.Add(new XElement("Monitoring"));
             this.Add(new XElement("LanguagePacks"));

@@ -27,6 +27,7 @@ namespace DADesignerFormsGUI
 
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
+            //http://www.codeproject.com/Tips/680095/Test-if-a-TreeNode-was-actually-clicked
             if (e.Node.Bounds.Contains(e.Location) && e.Button == MouseButtons.Left)
             {
                 // Code to load project details and generate a tab
@@ -42,6 +43,7 @@ namespace DADesignerFormsGUI
             }
         }
 
+        //display nam değişecek
         private void treeView1_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
         {
             if (e.Label != null)
@@ -54,7 +56,10 @@ namespace DADesignerFormsGUI
                         e.Node.EndEdit(false);
 
                         //api
-
+                        
+                        var classType= (ClassType)e.Node.Tag;
+                        classType.DisplayName = e.Label;
+                        ManagementPackInitializer.ManagementPack.RefreshLanguagePacksElement();
                     }
                     else
                     {
@@ -108,7 +113,7 @@ namespace DADesignerFormsGUI
             if (treeView1.SelectedNode == null)
                 treeView1.SelectedNode = treeView1.Nodes[0];
 
-            var childNode= treeView1.SelectedNode.Nodes.Add("child");
+            var childNode = treeView1.SelectedNode.Nodes.Add(string.Format("child{0}", treeView1.GetNodeCount(true)));
             ClassType childClass = new ClassType();
             
             childClass.ID= childClass.DisplayName = childNode.Text;
@@ -127,6 +132,11 @@ namespace DADesignerFormsGUI
             showxml.XMLText = ManagementPackInitializer.ManagementPack.Element.ToString();
             showxml.ShowDialog();
             showxml.Dispose();
+        }
+
+        private void propertyGrid1_PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
+        {
+
         }
     }
 }

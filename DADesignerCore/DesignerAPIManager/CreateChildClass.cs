@@ -24,13 +24,13 @@ namespace DADesignerCore.DesignerAPIManager
             parentid = clazzType.Parent.ID;
             classType.ID = string.Format("{0}.{1}", parentid, clazzType.SimpleName);
             ManagementPack.TypeDefinitions.EntityTypes.ClassTypes.Add(clazzType);
-            classType.IDChanged += classType_IDChanged;
+           // classType.IDChanged += classType_IDChanged;
         }
 
-        void classType_IDChanged(ClassType sender, string e)
-        {
-            ManagementPackQueries.ChangeClassTypeID(sender.ID, e);
-        }
+        //void classType_IDChanged(ClassType sender, string e)
+        //{
+        //    ManagementPackQueries.ChangeClassTypeID(sender.ID, e);
+        //}
 
         public void CreateRelationshipType()
         {
@@ -40,6 +40,8 @@ namespace DADesignerCore.DesignerAPIManager
             relationshipType.Source = classType.Parent.ID;
             relationshipType.Target = classType.ID;
             ManagementPack.TypeDefinitions.EntityTypes.RelationshipTypes.Add(relationshipType);
+            //  <RelationshipType ID="rs.root.Contains.child" Accessibility="" Base="" Abstract="false">
+
         }
 
         public void CreateDiscoveries()

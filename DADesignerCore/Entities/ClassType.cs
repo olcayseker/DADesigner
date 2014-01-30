@@ -12,8 +12,9 @@ namespace DADesignerCore.Entities
    public class ClassType
     {
        ClassTypeElement element = new ClassTypeElement("ClassType");
+       DisplayString displayName = new DisplayString();
 
-       public event Action<ClassType,string> IDChanged;
+       //public event Action<ClassType,string> IDChanged;
         
        public string ID
        {
@@ -23,16 +24,14 @@ namespace DADesignerCore.Entities
            }
            set
            {
-               if (IDChanged != null)
-               {
-                  // ManagementPackQueries.ChangeClassTypeID(ID, value);
-                   IDChanged(this, value);
-                  
-               }
-               //else
-               //{
-                   Element.Attribute("ID").Value = value;                   
-              // }
+               //if (IDChanged != null)
+               //{                 
+               //    IDChanged(this, value);                  
+               //}
+              
+                   Element.Attribute("ID").Value = value;
+                  // ManagementPack.TypeDefinitions.EntityTypes.ClassTypes[0].ID = value;
+             
            }
        }
         

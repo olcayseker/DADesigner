@@ -35,26 +35,27 @@ namespace DACore.ManagementPackElements
             : base(other)
         {
             Initialize();
-        }
+        }    
 
         void Initialize()
         {
-            this.Name = "Manifest";
-            this.Add(new XElement("Identity"));
-            this.Add(new XElement("Name"));
-            this.Add(new XElement("References"));
-           
+            //this.AddFirst(new XElement("Manifest",
+            //    new XElement("Identity"),
+            //    new XElement("Name"),
+            //    new XElement("References")));           
+            this.AddFirst(new XElement("Manifest",               
+               new XElement("Name")
+              )); 
         }
 
-        public void AddIdentity(IdentityElement Identity)
-        {
-            this.Element("Identity").Remove();
-                       
-            this.AddFirst(new XElement("Identity",
-                  new XElement("ID", Identity.ID),
-                  new XElement("Version", Identity.Version)));
+        //public void AddIdentity(IdentityElement Identity)
+        //{
+        //    this.Element("Manifest").Element("Identity").Remove();
+        //    this.Element("Manifest").AddFirst(new XElement("Identity",
+        //          new XElement("ID", Identity.ID),
+        //          new XElement("Version", Identity.Version)));
 
-        }
+        //}
 
     }
 }

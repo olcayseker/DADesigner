@@ -21,17 +21,17 @@ namespace DADesignerCore.DesignerAPIManager
             rootClass.Base = "System!System.Service";
             ManagementPack.TypeDefinitions.EntityTypes.ClassTypes.Add(rootClass);
             displayName = rootClass.DisplayName;
-            rootClass.IDChanged += rootClass_IDChanged;
+           // rootClass.IDChanged += rootClass_IDChanged;
         }
 
-        void rootClass_IDChanged(object sender, string e)
-        {
-            //throw new NotImplementedException();
-        }
+        //void rootClass_IDChanged(object sender, string e)
+        //{
+        //    //throw new NotImplementedException();
+        //}
 
         public void CreateDisplayString()
         {
-            DisplayString displayString = new DisplayString() { Name = displayName };
+            DisplayString displayString = new DisplayString() { Name = displayName,ElementID=displayName,Description=displayName };
             ManagementPack.LanguagePacks.LanguagePack.DisplayStrings.Add(displayString);
         }
 

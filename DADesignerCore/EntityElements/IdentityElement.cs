@@ -36,34 +36,12 @@ namespace DACore.ManagementPackElements
         }
 
         void Initialize()
-        {
-            this.Name = "Identity";
-            this.Add(new XElement("ID", string.Empty));
-            this.Add(new XElement("Version", string.Empty));
+        {            
+            this.Element("Manifest").Add(new XElement("Identity",
+                new XElement("ID", string.Empty),
+                new XElement("Version", string.Empty)));
         }
 
-        public string ID
-        {
-
-            get
-            {
-                return this.Element("ID").Value;
-            }
-            set
-            {
-                this.Element("ID").Value = value;
-            }
-        }
-        public string Version
-        {
-            get
-            {
-                return this.Element("Version").Value;
-            }
-            set
-            {
-                this.Element("Version").Value = value;
-            }
-        }
+      
     }
 }

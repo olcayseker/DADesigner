@@ -47,6 +47,7 @@
     <Compile Include="DesignerAPIManager\ICreateRoot.cs" />
     <Compile Include="DesignerAPIManager\ManagementPackInitializer.cs" />
     <Compile Include="DesignerAPIManager\ManagementPackQueries.cs" />
+    <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\ClassType.cs" />
     <Compile Include="Entities\DataSource.cs" />
     <Compile Include="Entities\DependencyMonitor.cs" />

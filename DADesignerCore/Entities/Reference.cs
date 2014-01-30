@@ -11,50 +11,96 @@ namespace DADesignerCore.Entities
 {
     public class Reference
     {
-        ReferenceElement element = new ReferenceElement("Reference");
-       // 
+        ReferenceElement element;
+        int internalIndex = 0;
+        ManifestElement _parent;
+        public Reference(ManifestElement parent,int arrayIndex)//:this()
+        {
+            _parent = parent;          
+            _parent.Element("Manifest").Element("References").Add(element);
+
+            if (arrayIndex > -1)
+                internalIndex = arrayIndex;
+            else
+                internalIndex = _parent.Element("Manifest").Descendants("Reference").Count() - 1;
+        }
+
+        public Reference()
+        {
+            element = new ReferenceElement("Reference");
+        }
+       
         public string Alias
         {
             get
             {
-                return element.Alias;
+                if(_parent !=null)
+                    return _parent.Element("Manifest").Descendants("Reference").ElementAt(internalIndex).Attribute("Alias").Value;
+                else
+                    return Element.Attribute("Alias").Value;
             }
             set
             {
-                element.Alias = value;
+                if (_parent != null)
+                    _parent.Element("Manifest").Descendants("Reference").ElementAt(internalIndex).Attribute("Alias").Value = value;
+                else
+                    Element.Attribute("Alias").Value = value;
+               
             }
         }
         public string ID
         {
             get
             {
-                return element.ID;
+                if (_parent != null)
+                    return _parent.Element("Manifest").Descendants("Reference").ElementAt(internalIndex).Element("ID").Value;
+                else
+                    return Element.Element("ID").Value;
+                
             }
             set
             {
-                element.ID = value;
+                if (_parent != null)
+                    _parent.Element("Manifest").Descendants("Reference").ElementAt(internalIndex).Element("ID").Value = value;
+                else
+                    Element.Element("ID").Value = value;
+                
             }
         }
         public string Version
         {
             get
             {
-                return element.Version;
+                if (_parent != null)
+                    return _parent.Element("Manifest").Descendants("Reference").ElementAt(internalIndex).Element("Version").Value;
+                 else
+                    return Element.Element("Version").Value;
             }
             set
             {
-                element.Version = value;
+                if (_parent != null)
+                    _parent.Element("Manifest").Descendants("Reference").ElementAt(internalIndex).Element("Version").Value = value;
+                else
+                    Element.Element("Version").Value = value;
+                
             }
         }     
         public string PublicKeyToken
         {
             get
             {
-                return element.PublicKeyToken;
+                if (_parent != null)
+                    return _parent.Element("Manifest").Descendants("Reference").ElementAt(internalIndex).Element("PublicKeyToken").Value; 
+                 else
+                    return Element.Element("PublicKeyToken").Value; 
             }
             set
             {
-                element.PublicKeyToken = value;
+                if (_parent != null)
+                    _parent.Element("Manifest").Descendants("Reference").ElementAt(internalIndex).Element("PublicKeyToken").Value = value;
+                else
+                    Element.Element("PublicKeyToken").Value = value;
+                
             }
         }   
 
